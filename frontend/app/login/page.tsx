@@ -145,7 +145,7 @@ export default function LoginPage() {
               Forgot password?
             </a>
 
-            <div className="flex items-start gap-2 mb-3">
+            <div className="flex items-start gap-2 mb-5">
               <input 
                 type="checkbox"
                 checked={rememberMe}
@@ -157,9 +157,39 @@ export default function LoginPage() {
                 Remember me
               </label>
             </div>
+
+            {/* Simple Math CAPTCHA */}
+            <div className="bg-[#f9f9f9] border border-[#d3d3d3] rounded-[4px] p-4 mb-5">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="bg-white border border-[#d3d3d3] rounded px-3 py-2 text-[#333] font-mono text-lg">
+                    {captchaQuestion.num1}
+                  </div>
+                  <span className="text-[#333] text-xl font-bold">+</span>
+                  <div className="bg-white border border-[#d3d3d3] rounded px-3 py-2 text-[#333] font-mono text-lg">
+                    {captchaQuestion.num2}
+                  </div>
+                  <span className="text-[#333] text-xl font-bold">=</span>
+                  <input
+                    type="number"
+                    value={captchaAnswer}
+                    onChange={(e) => setCaptchaAnswer(e.target.value)}
+                    required
+                    className="w-[70px] bg-white border border-[#d3d3d3] rounded px-3 py-2 text-[#333] font-mono text-lg outline-none focus:border-[#1a73e8]"
+                    placeholder="?"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-2">
+                  <svg className="w-6 h-6 text-[#1a73e8]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                  </svg>
+                  <span className="text-[#333] text-xs">Solve to verify you&apos;re human</span>
+                </div>
+              </div>
+            </div>
           </form>
 
-          <div className="mt-[80px]">
+          <div className="mt-[60px]">
             <p className="text-[#737373] text-[16px] mb-3">
               New to Netflix?{" "}
               <Link href="/signup" className="text-white hover:underline font-normal">
