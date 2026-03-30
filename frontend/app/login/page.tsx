@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/contexts/AuthContext";
 import Link from "next/link";
@@ -10,12 +10,30 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showRecaptchaInfo, setShowRecaptchaInfo] = useState(false);
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0, answer: 0 });
   const { login } = useAuth();
   const router = useRouter();
+
+  // Generate simple math captcha
+  useEffect(() => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setCaptchaQuestion({ num1, num2, answer: num1 + num2 });
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
+    
+    // Validate captcha
+    if (parseInt(captchaAnswer) !== captchaQuestion.answer) {
+      setError("Please solve the math problem correctly");
+      return;
+    }
+    
     setLoading(true);
     try {
       await login(email, password);
@@ -57,41 +75,49 @@ export default function LoginPage() {
 
       {/* Login Form */}
       <main className="relative z-10 flex justify-center px-4 pb-20 pt-8">
-        <div className="w-full max-w-[450px] bg-black/75 rounded px-[68px] py-[60px]">
-          <h1 className="text-[32px] font-bold text-white mb-7">Sign In</h1>
+        <div className="w-full max-w-[450px] bg-black/75 rounded-[4px] px-[68px] py-[60px]">
+          <h1 className="text-[33px] font-bold text-white mb-[28px]">Sign In</h1>
 
           {error && (
-            <div className="bg-[#e87c03] text-white text-sm px-5 py-2.5 rounded mb-4">
+            <div className="bg-[#e87c03] text-white text-[13px] px-5 py-[10px] rounded-[4px] mb-4">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="relative">
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <div className="relative mb-4">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="peer w-full h-[50px] rounded bg-[#333] text-white text-base px-5 pt-4 border border-transparent focus:border-[#e50914] outline-none transition-colors"
+                className="peer w-full h-[50px] rounded-[4px] bg-[#333333] text-white text-[16px] px-5 pt-[18px] pb-[2px] border border-transparent focus:border-white focus:ring-0 outline-none transition-all"
                 placeholder=" "
+                id="email"
               />
-              <label className="absolute left-5 top-1/2 -translate-y-1/2 text-[#8c8c8c] text-sm transition-all duration-150 pointer-events-none peer-focus:top-3 peer-focus:text-[11px] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:text-[11px]">
+              <label 
+                htmlFor="email"
+                className="absolute left-5 top-[16px] text-[#8c8c8c] text-[16px] transition-all duration-150 pointer-events-none peer-focus:top-[8px] peer-focus:text-[11px] peer-[:not(:placeholder-shown)]:top-[8px] peer-[:not(:placeholder-shown)]:text-[11px]"
+              >
                 Email or phone number
               </label>
             </div>
 
-            <div className="relative">
+            <div className="relative mb-4">
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="peer w-full h-[50px] rounded bg-[#333] text-white text-base px-5 pt-4 border border-transparent focus:border-[#e50914] outline-none transition-colors"
+                className="peer w-full h-[50px] rounded-[4px] bg-[#333333] text-white text-[16px] px-5 pt-[18px] pb-[2px] border border-transparent focus:border-white focus:ring-0 outline-none transition-all"
                 placeholder=" "
+                id="password"
               />
-              <label className="absolute left-5 top-1/2 -translate-y-1/2 text-[#8c8c8c] text-sm transition-all duration-150 pointer-events-none peer-focus:top-3 peer-focus:text-[11px] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:text-[11px]">
+              <label 
+                htmlFor="password"
+                className="absolute left-5 top-[16px] text-[#8c8c8c] text-[16px] transition-all duration-150 pointer-events-none peer-focus:top-[8px] peer-focus:text-[11px] peer-[:not(:placeholder-shown)]:top-[8px] peer-[:not(:placeholder-shown)]:text-[11px]"
+              >
                 Password
               </label>
             </div>
@@ -99,33 +125,69 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-12 bg-[#e50914] hover:bg-[#f40612] text-white text-base font-bold rounded transition-colors disabled:opacity-60"
+              className="w-full h-[48px] bg-[#e50914] hover:bg-[#c11119] text-white text-[16px] font-medium rounded-[4px] transition-all disabled:opacity-50 disabled:cursor-not-allowed mb-3"
             >
               {loading ? "Signing In..." : "Sign In"}
             </button>
 
-            <div className="flex justify-between items-center text-sm text-[#b3b3b3]">
-              <label className="flex items-center gap-1.5 cursor-pointer">
-                <input type="checkbox" className="accent-[#e50914]" />
+            <div className="text-center mb-3">
+              <span className="text-[#b3b3b3] text-[13px]">OR</span>
+            </div>
+
+            <button
+              type="button"
+              className="w-full h-[48px] bg-[#ffffff]/10 hover:bg-[#ffffff]/20 text-white text-[16px] font-medium rounded-[4px] transition-all mb-3"
+            >
+              Use a sign-in code
+            </button>
+
+            <a href="#" className="text-white text-[13px] text-center hover:underline mb-5">
+              Forgot password?
+            </a>
+
+            <div className="flex items-start gap-2 mb-3">
+              <input 
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                id="rememberMe"
+                className="w-[16px] h-[16px] mt-[2px] accent-[#b3b3b3] cursor-pointer flex-shrink-0" 
+              />
+              <label htmlFor="rememberMe" className="text-[#b3b3b3] text-[13px] cursor-pointer select-none">
                 Remember me
               </label>
-              <span className="hover:underline cursor-pointer">Need help?</span>
             </div>
           </form>
 
-          <div className="mt-16 text-[#737373] text-base">
-            <p>
+          <div className="mt-[80px]">
+            <p className="text-[#737373] text-[16px] mb-3">
               New to Netflix?{" "}
-              <Link href="/signup" className="text-white hover:underline font-medium">
+              <Link href="/signup" className="text-white hover:underline font-normal">
                 Sign up now
               </Link>
               .
             </p>
-            <p className="text-[13px] mt-4 leading-normal">
-              This page is protected by Google reCAPTCHA to ensure you&apos;re not a
-              bot.{" "}
-              <a href="#" className="text-[#0071eb] hover:underline">Learn more</a>.
-            </p>
+            <div className="text-[#8c8c8c] text-[13px] leading-[18px]">
+              <p>
+                This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.{" "}
+                <button 
+                  onClick={() => setShowRecaptchaInfo(!showRecaptchaInfo)}
+                  className="text-[#0071eb] hover:underline"
+                >
+                  Learn more
+                </button>
+                .
+              </p>
+              {showRecaptchaInfo && (
+                <div className="mt-3 text-[#8c8c8c]">
+                  <p>
+                    The information collected by Google reCAPTCHA is subject to the Google{" "}
+                    <a href="#" className="text-[#0071eb] hover:underline">Privacy Policy</a> and{" "}
+                    <a href="#" className="text-[#0071eb] hover:underline">Terms of Service</a>, and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google).
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </main>
