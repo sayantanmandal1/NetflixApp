@@ -7,7 +7,15 @@
   --color-netflix-dark: #181818;
   --color-netflix-gray: #808080;
   --color-netflix-light-gray: #b3b3b3;
-  --font-netflix: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-netflix: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Netflix Sans Font */
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Netflix Sans'), local('Helvetica Neue'), local('Helvetica'), local('Arial');
 }
 
 * {
@@ -19,7 +27,7 @@
 html, body {
   background-color: #141414;
   color: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
