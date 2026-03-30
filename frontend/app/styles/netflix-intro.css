@@ -1,0 +1,631 @@
+﻿#netflix-intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+netflixintro {
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  background-size: 4000px;
+  background-position: -1950px 0;
+}
+
+netflixintro.playing {
+  animation-name: zoom-in;
+  animation-delay: 0.5s;
+  animation-duration: 3.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+netflixintro::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: #000000;
+  width: 150%;
+  height: 30%;
+  left: -25%;
+  bottom: -27%;
+  border-radius: 50%;
+  z-index: 5;
+  transform-origin: left center;
+  background-size: 4000px;
+  background-position: -1950px 0;
+}
+
+[class*="helper-"] {
+  position: absolute;
+}
+
+[class*="helper-"] .effect-brush {
+  position: absolute;
+  width: 100%;
+  height: 300%;
+  top: 0;
+  overflow: hidden;
+}
+
+[class*="helper-"] .effect-brush::before {
+  display: block;
+  content: "";
+  position: absolute;
+  background-color: #e40913;
+  width: 100%;
+  height: 70%;
+  box-shadow: 0px 0px 29px 24px #e40913;
+}
+
+[class*="helper-"] .effect-brush [class*="fur-"] {
+  display: block;
+  position: absolute;
+  bottom: 10%;
+  height: 30%;
+}
+
+[class*="helper-"] .effect-brush .fur-1  { left: 0%;    width: 3.8%; background: linear-gradient(to bottom, #e40913 0%, #e40913 15%, rgba(0,0,0,0) 81%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-2  { left: 3.8%;  width: 2.8%; background: linear-gradient(to bottom, #e40913 0%, #e40913 10%, rgba(0,0,0,0) 62%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-3  { left: 6.6%;  width: 4.8%; background: linear-gradient(to bottom, #e40913 0%, #e40913 37%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-4  { left: 11.4%; width: 4%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 23%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-5  { left: 15.4%; width: 4%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 15%, rgba(0,0,0,0) 86%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-6  { left: 19.4%; width: 2.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 27%, rgba(0,0,0,0) 89%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-7  { left: 21.9%; width: 4%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 20%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-8  { left: 25.9%; width: 2%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 30%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-9  { left: 27.9%; width: 4%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 35%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-10 { left: 31.9%; width: 3.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 39%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-11 { left: 35.4%; width: 2%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 34%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-12 { left: 37.4%; width: 2.6%; background: linear-gradient(to bottom, #e40913 0%, #e40913 22%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-13 { left: 40%;   width: 6%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 47%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-14 { left: 46%;   width: 2%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 36%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-15 { left: 48%;   width: 5.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 29%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-16 { left: 53.5%; width: 3%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 39%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-17 { left: 56.5%; width: 4.1%; background: linear-gradient(to bottom, #e40913 0%, #e40913 45%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-18 { left: 60.6%; width: 2.4%; background: linear-gradient(to bottom, #e40913 0%, #e40913 34%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-19 { left: 63%;   width: 4%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 47%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-20 { left: 67%;   width: 1.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 27%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-21 { left: 68.5%; width: 2.8%; background: linear-gradient(to bottom, #e40913 0%, #e40913 37%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-22 { left: 71.3%; width: 2.3%; background: linear-gradient(to bottom, #e40913 0%, #e40913 9%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-23 { left: 73.6%; width: 2.2%; background: linear-gradient(to bottom, #e40913 0%, #e40913 28%, rgba(0,0,0,0) 92%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-24 { left: 75.8%; width: 1%;   background: linear-gradient(to bottom, #e40913 0%, #e40913 37%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-25 { left: 76.8%; width: 2.1%; background: linear-gradient(to bottom, #e40913 0%, #e40913 28%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-26 { left: 78.9%; width: 4.1%; background: linear-gradient(to bottom, #e40913 0%, #e40913 34%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-27 { left: 83%;   width: 2.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 21%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-28 { left: 85.5%; width: 4.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 39%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-29 { left: 90%;   width: 2.8%; background: linear-gradient(to bottom, #e40913 0%, #e40913 30%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-30 { left: 92.8%; width: 3.5%; background: linear-gradient(to bottom, #e40913 0%, #e40913 19%, rgba(0,0,0,0) 100%); }
+[class*="helper-"] .effect-brush .fur-31 { left: 96.3%; width: 3.7%; background: linear-gradient(to bottom, #e40913 0%, #e40913 37%, rgba(0,0,0,0) 100%); }
+
+[class*="helper-"] .effect-lumieres {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+[class*="helper-"] .effect-lumieres.playing {
+  animation-name: showing-lumieres;
+  animation-duration: 2s;
+  animation-delay: 1.6s;
+  animation-fill-mode: forwards;
+}
+
+[class*="helper-"] .effect-lumieres [class*="lamp-"] {
+  position: absolute;
+  display: block;
+  height: 100%;
+  box-shadow: 0px 0px 10px 0px rgba(228, 9, 19, 0.75);
+  background: var(--color);
+}
+
+[class*="helper-"] .effect-lumieres [class*="lamp-"]::before {
+  position: absolute;
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color);
+  box-shadow: 0px 0px 10px 0px rgba(228, 9, 19, 0.75);
+}
+
+.lamp-1  { --color: #ff0100; left: 0.7%;  width: 1%;   }
+.lamp-2  { --color: #ffde01; left: 2.2%;  width: 1.4%; }
+.lamp-3  { --color: #ff00cc; left: 5.8%;  width: 2.1%; }
+.lamp-4  { --color: #04fd8f; left: 10.1%; width: 2%;   }
+.lamp-5  { --color: #ff0100; left: 12.9%; width: 1.4%; }
+.lamp-6  { --color: #ff9600; left: 15.3%; width: 2.8%; }
+.lamp-7  { --color: #0084ff; left: 21.2%; width: 2.5%; }
+.lamp-8  { --color: #f84006; left: 25%;   width: 2.5%; }
+.lamp-9  { --color: #ffc601; left: 30.5%; width: 3%;   }
+.lamp-10 { --color: #ff4800; left: 36.3%; width: 3%;   }
+.lamp-11 { --color: #fd0100; left: 41%;   width: 2.2%; }
+.lamp-12 { --color: #01ffff; left: 44.2%; width: 2.6%; }
+.lamp-13 { --color: #ffc601; left: 51.7%; width: 0.5%; }
+.lamp-14 { --color: #ffc601; left: 52.1%; width: 1.8%; }
+.lamp-15 { --color: #0078fe; left: 53.8%; width: 2.3%; }
+.lamp-16 { --color: #0080ff; left: 57.2%; width: 2%;   }
+.lamp-17 { --color: #ffae01; left: 62.3%; width: 2.9%; }
+.lamp-18 { --color: #ff00bf; left: 65.8%; width: 1.7%; }
+.lamp-19 { --color: #a601f4; left: 72.8%; width: 0.8%; }
+.lamp-20 { --color: #f30b34; left: 74.3%; width: 2%;   }
+.lamp-21 { --color: #ff00bf; left: 79.8%; width: 2%;   }
+.lamp-22 { --color: #04fd8f; left: 78.2%; width: 2%;   }
+.lamp-23 { --color: #01ffff; left: 78.5%; width: 2%;   }
+.lamp-24 { --color: #a201ff; left: 85.3%; width: 1.1%; }
+.lamp-25 { --color: #ec0014; left: 86.9%; width: 1.1%; }
+.lamp-26 { --color: #0078fe; left: 88.8%; width: 2%;   }
+.lamp-27 { --color: #ff0036; left: 92.4%; width: 2.4%; }
+.lamp-28 { --color: #06f98c; left: 96.2%; width: 2.1%; }
+
+.lamp-1::before  { left: 120%; }
+.lamp-2::before  { left: 80%;  }
+.lamp-3::before  { left: 150%; }
+.lamp-4::before  { left: 40%;  }
+.lamp-5::before  { left: 100%; }
+.lamp-6::before  { left: 60%;  }
+.lamp-7::before  { left: 130%; }
+.lamp-8::before  { left: 70%;  }
+.lamp-9::before  { left: 110%; }
+.lamp-10::before { left: 90%;  }
+.lamp-11::before { left: 140%; }
+.lamp-12::before { left: 50%;  }
+.lamp-13::before { left: 160%; }
+.lamp-14::before { left: 30%;  }
+.lamp-15::before { left: 120%; }
+.lamp-16::before { left: 75%;  }
+.lamp-17::before { left: 95%;  }
+.lamp-18::before { left: 55%;  }
+.lamp-19::before { left: 135%; }
+.lamp-20::before { left: 45%;  }
+.lamp-21::before { left: 115%; }
+.lamp-22::before { left: 85%;  }
+.lamp-23::before { left: 65%;  }
+.lamp-24::before { left: 125%; }
+.lamp-25::before { left: 105%; }
+.lamp-26::before { left: 35%;  }
+.lamp-27::before { left: 145%; }
+.lamp-28::before { left: 55%;  }
+
+.lamp-1.playing,  .lamp-3.playing,  .lamp-5.playing,  .lamp-7.playing,
+.lamp-9.playing,  .lamp-11.playing, .lamp-13.playing, .lamp-15.playing,
+.lamp-17.playing, .lamp-19.playing, .lamp-21.playing, .lamp-23.playing,
+.lamp-25.playing, .lamp-27.playing {
+  animation-name: lumieres-moving-left;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+.lamp-1.playing::before,  .lamp-3.playing::before,  .lamp-5.playing::before,
+.lamp-7.playing::before,  .lamp-9.playing::before,  .lamp-11.playing::before,
+.lamp-13.playing::before, .lamp-15.playing::before, .lamp-17.playing::before,
+.lamp-19.playing::before, .lamp-21.playing::before, .lamp-23.playing::before,
+.lamp-25.playing::before, .lamp-27.playing::before {
+  animation-name: lumieres-moving-left;
+  animation-duration: 5.5s;
+}
+
+.lamp-2.playing,  .lamp-4.playing,  .lamp-6.playing,  .lamp-8.playing,
+.lamp-10.playing, .lamp-12.playing, .lamp-14.playing, .lamp-16.playing,
+.lamp-18.playing, .lamp-20.playing, .lamp-22.playing, .lamp-24.playing,
+.lamp-26.playing, .lamp-28.playing {
+  animation-name: lumieres-moving-right;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+.lamp-2.playing::before,  .lamp-4.playing::before,  .lamp-6.playing::before,
+.lamp-8.playing::before,  .lamp-10.playing::before, .lamp-12.playing::before,
+.lamp-14.playing::before, .lamp-16.playing::before, .lamp-18.playing::before,
+.lamp-20.playing::before, .lamp-22.playing::before, .lamp-24.playing::before,
+.lamp-26.playing::before, .lamp-28.playing::before {
+  animation-name: lumieres-moving-right;
+  animation-duration: 5.5s;
+}
+
+.effect-brush.playing {
+  animation-name: brush-moving;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="N"] { transform-origin: 30% center; }
+
+netflixintro[letter="N"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 22.4%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="N"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="N"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1.2s;
+}
+
+netflixintro[letter="N"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="N"] .helper-3 {
+  width: 19%;
+  height: 150%;
+  left: 40.5%;
+  top: -25%;
+  transform: rotate(-19.5deg);
+  box-shadow: 0px 0px 35px -12px rgba(0,0,0,.4);
+  overflow: hidden;
+}
+
+netflixintro[letter="N"] .helper-3 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .8s;
+}
+
+netflixintro[letter="N"] .helper-2 {
+  width: 19.5%;
+  height: 100%;
+  left: 57.8%;
+  top: 0;
+  transform: rotate(180deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="N"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+netflixintro[letter="E"] { transform-origin: 30% center; }
+
+netflixintro[letter="E"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 22%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="E"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="E"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1.2s;
+}
+
+netflixintro[letter="E"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="E"] .helper-2 {
+  width: 17.5%;
+  height: 50%;
+  left: 38%;
+  top: -49px;
+  transform: rotate(270deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="E"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .8s;
+}
+
+netflixintro[letter="E"] .helper-3 {
+  width: 17%;
+  height: 39%;
+  left: 33%;
+  top: 29%;
+  transform: rotate(-90deg);
+  box-shadow: 0px 0px 35px -12px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+netflixintro[letter="E"] .helper-3.playing {
+  animation-name: fading-out;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+netflixintro[letter="E"] .helper-3 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .6s;
+}
+
+netflixintro[letter="E"] .helper-4 {
+  width: 17.5%;
+  height: 50%;
+  left: 38%;
+  top: 196px;
+  transform: rotate(270deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="E"] .helper-4 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+netflixintro[letter="T"] { transform-origin: center center; }
+
+netflixintro[letter="T"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 38%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="T"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="T"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1s;
+}
+
+netflixintro[letter="T"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="T"] .helper-2 {
+  width: 17.5%;
+  height: 54%;
+  left: 39%;
+  top: -55px;
+  transform: rotate(270deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="T"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+netflixintro[letter="F"] { transform-origin: 30% center; }
+
+netflixintro[letter="F"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 22%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="F"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="F"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1.2s;
+}
+
+netflixintro[letter="F"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="F"] .helper-2 {
+  width: 17.5%;
+  height: 50%;
+  left: 38%;
+  top: -49px;
+  transform: rotate(270deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="F"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .7s;
+}
+
+netflixintro[letter="F"] .helper-3 {
+  width: 17%;
+  height: 39%;
+  left: 33%;
+  top: 29%;
+  transform: rotate(-90deg);
+  box-shadow: 0px 0px 35px -12px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+netflixintro[letter="F"] .helper-3.playing {
+  animation-name: fading-out;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+netflixintro[letter="F"] .helper-3 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+netflixintro[letter="L"] { transform-origin: 30% center; }
+
+netflixintro[letter="L"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 22%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="L"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="L"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: .8s;
+}
+
+netflixintro[letter="L"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="L"] .helper-2 {
+  width: 17.5%;
+  height: 50%;
+  left: 38%;
+  top: 196px;
+  transform: rotate(270deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="L"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .4s;
+}
+
+netflixintro[letter="I"] { transform-origin: center center; }
+
+netflixintro[letter="I"] .helper-1 {
+  width: 19.5%;
+  height: 100%;
+  background-color: rgba(228, 9, 19, 0.5);
+  left: 38%;
+  top: 0;
+  transform: rotate(180deg);
+}
+
+netflixintro[letter="I"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="I"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1s;
+}
+
+netflixintro[letter="I"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="X"] { transform-origin: center center; }
+
+netflixintro[letter="X"] .helper-1 {
+  width: 19%;
+  height: 150%;
+  left: 40.5%;
+  top: -25%;
+  transform: rotate(-19.5deg);
+}
+
+netflixintro[letter="X"] .helper-1.playing {
+  animation-name: fading-lumieres-box;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+netflixintro[letter="X"] .helper-1 .effect-brush.playing {
+  animation-duration: 2.5s;
+  animation-delay: 1.2s;
+}
+
+netflixintro[letter="X"] .helper-1 .effect-brush [class*="fur-"] {
+  bottom: 0;
+  height: 40%;
+}
+
+netflixintro[letter="X"] .helper-2 {
+  width: 19%;
+  height: 150%;
+  left: 40.5%;
+  top: -25%;
+  transform: rotate(19.5deg);
+  overflow: hidden;
+}
+
+netflixintro[letter="X"] .helper-2 .effect-brush.playing {
+  animation-duration: 2s;
+  animation-delay: .5s;
+}
+
+@keyframes brush-moving {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes fading-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes lumieres-moving-right {
+  0%   { transform: translate(0); }
+  40%  { transform: translate(-10px) scaleX(1); }
+  50%  { transform: translate(-60px); }
+  100% { transform: translate(-120px) scaleX(3); }
+}
+
+@keyframes lumieres-moving-left {
+  0%   { transform: translate(0); }
+  40%  { transform: translate(10px) scaleX(1); }
+  50%  { transform: translate(60px); }
+  100% { transform: translate(120px) scaleX(3); }
+}
+
+@keyframes zoom-in {
+  0%   { transform: scale(1); }
+  100% { transform: scale(15); }
+}
+
+@keyframes showing-lumieres {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fading-lumieres-box {
+  0%   { background-color: rgba(228, 9, 19, 0.5); }
+  100% { background-color: rgba(228, 9, 19, 0); }
+}

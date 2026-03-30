@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: netflix
+      POSTGRES_PASSWORD: netflix_secret_pw_2026
+      POSTGRES_DB: netflix_clone
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U netflix -d netflix_clone"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://netflix:netflix_secret_pw_2026@postgres:5432/netflix_clone?sslmode=disable
+      JWT_SECRET: n3tfl1x_cl0n3_jwt_s3cr3t_k3y_2026_r4nd0m
+      TMDB_API_KEY: c8cb0438721b44c5e8d2d9d31a1de94e
+      PORT: "8000"
+
+volumes:
+  pgdata:
