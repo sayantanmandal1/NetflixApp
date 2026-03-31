@@ -84,44 +84,70 @@ export default function Billboard({ items, onMoreInfo }: BillboardProps) {
         />
       )}
 
-      {/* Vignette / Gradient overlays — Netflix uses these exact gradients */}
+      {/* Vignette / gradient overlays — Netflix uses these exact gradients */}
       <div className="absolute inset-0 bg-gradient-to-r from-[rgba(20,20,20,0.8)] via-[rgba(20,20,20,0.15)] to-transparent w-[50%]" />
       <div className="absolute bottom-0 left-0 right-0 h-[14.7vw] bg-gradient-to-t from-[#141414] via-[rgba(20,20,20,0.6)] to-transparent" />
 
-      {/* Content — Netflix positions at ~35% from bottom */}
+      {/* Content — Netflix .fill-container > .info.meta-layer > .logo-and-text.meta-layer */}
       <div className="absolute bottom-[35%] left-[4%] max-w-[36%] min-w-[300px] z-10">
-        <h1
-          className={`text-[2.8vw] font-bold text-white mb-[0.8vw] leading-[1.1] drop-shadow-lg transition-opacity duration-500 ${fadeClass}`}
-          style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.45)" }}
+        {/* Netflix .titleWrapper with transform-origin: left bottom */}
+        <div
+          className={`transition-all duration-[1300ms] ${fadeClass}`}
+          style={{ transformOrigin: "left bottom" }}
         >
-          {title}
-        </h1>
+          <h1
+            className="text-[2.8vw] font-bold text-white mb-[0.8vw] leading-[1.1]"
+            style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.45)" }}
+          >
+            {title}
+          </h1>
+        </div>
+        {/* Netflix .info-wrapper */}
         <p
-          className={`text-[1.2vw] text-white/90 mb-[1.5vw] line-clamp-3 drop-shadow leading-[1.4] transition-opacity duration-500 ${fadeClass}`}
+          className={`text-[1.2vw] text-white/90 mb-[1.5vw] line-clamp-3 leading-[1.4] transition-opacity duration-500 ${fadeClass}`}
           style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.45)" }}
         >
           {currentItem.overview}
         </p>
-        <div className="flex items-center gap-[0.8vw]">
-          {/* Netflix Play button - white bg, rounded-[4px], bold font */}
+        <div className="flex items-center gap-0">
+          {/* Netflix Play button — .color-primary.hasLabel.hasIcon
+              padding: 0.8rem; pl: 2rem; pr: 2.4rem; border: 0; border-radius: 4px;
+              .billboard-links button { margin-bottom: 1rem; margin-right: 1rem; } */}
           <button
             onClick={() => onMoreInfo(currentItem)}
-            className="flex items-center gap-[0.8vw] px-[2.2vw] py-[0.55vw] bg-white text-black text-[1.2vw] font-bold rounded-[4px] hover:bg-[rgba(255,255,255,0.75)] transition-all duration-200"
+            className="flex items-center bg-white text-black font-bold rounded-[4px] hover:bg-[rgba(255,255,255,0.75)] transition-all duration-200 cursor-pointer border-0 appearance-none select-none relative opacity-100"
+            style={{
+              padding: "0.8rem",
+              paddingLeft: "2rem",
+              paddingRight: "2.4rem",
+              marginRight: "1rem",
+              marginBottom: "1rem",
+            }}
           >
-            <svg className="w-[2vw] h-[2vw]" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-[24px] h-[24px]" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 4l15 8-15 8z" />
             </svg>
-            <span>Play</span>
+            <div style={{ width: "1rem" }} />
+            <span className="text-[1.6rem] leading-none">Play</span>
           </button>
-          {/* Netflix More Info button - gray semi-transparent bg */}
+          {/* Netflix More Info button — .color-secondary.hasLabel.hasIcon
+              bg: rgba(109,109,110,0.7), hover: rgba(109,109,110,0.4) */}
           <button
             onClick={() => onMoreInfo(currentItem)}
-            className="flex items-center gap-[0.8vw] px-[2.2vw] py-[0.55vw] bg-[rgba(109,109,110,0.7)] text-white text-[1.2vw] font-bold rounded-[4px] hover:bg-[rgba(109,109,110,0.4)] transition-all duration-200"
+            className="flex items-center bg-[rgba(109,109,110,0.7)] text-white font-bold rounded-[4px] hover:bg-[rgba(109,109,110,0.4)] transition-all duration-200 cursor-pointer border-0 appearance-none select-none relative opacity-100"
+            style={{
+              padding: "0.8rem",
+              paddingLeft: "2rem",
+              paddingRight: "2.4rem",
+              marginRight: "1rem",
+              marginBottom: "1rem",
+            }}
           >
-            <svg className="w-[2vw] h-[2vw]" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-[24px] h-[24px]" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
             </svg>
-            <span>More Info</span>
+            <div style={{ width: "1rem" }} />
+            <span className="text-[1.6rem] leading-none">More Info</span>
           </button>
         </div>
       </div>
