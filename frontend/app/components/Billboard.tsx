@@ -88,38 +88,40 @@ export default function Billboard({ items, onMoreInfo }: BillboardProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-[rgba(20,20,20,0.8)] via-[rgba(20,20,20,0.15)] to-transparent w-[50%]" />
       <div className="absolute bottom-0 left-0 right-0 h-[14.7vw] bg-gradient-to-t from-[#141414] via-[rgba(20,20,20,0.6)] to-transparent" />
 
-      {/* Content — Netflix positions it at ~38% from bottom */}
+      {/* Content — Netflix positions at ~35% from bottom */}
       <div className="absolute bottom-[35%] left-[4%] max-w-[36%] min-w-[300px] z-10">
         <h1
-          className={`text-[2.5vw] font-bold text-white mb-[0.8vw] leading-tight drop-shadow-lg transition-opacity duration-500 ${fadeClass}`}
+          className={`text-[2.8vw] font-bold text-white mb-[0.8vw] leading-[1.1] drop-shadow-lg transition-opacity duration-500 ${fadeClass}`}
           style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.45)" }}
         >
           {title}
         </h1>
         <p
-          className={`text-[1.1vw] text-white/90 mb-[1.2vw] line-clamp-3 drop-shadow leading-normal transition-opacity duration-500 ${fadeClass}`}
+          className={`text-[1.2vw] text-white/90 mb-[1.5vw] line-clamp-3 drop-shadow leading-[1.4] transition-opacity duration-500 ${fadeClass}`}
           style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.45)" }}
         >
           {currentItem.overview}
         </p>
-        <div className="flex items-center gap-[0.6vw]">
+        <div className="flex items-center gap-[0.8vw]">
+          {/* Netflix Play button - white bg, rounded-[4px], bold font */}
           <button
             onClick={() => onMoreInfo(currentItem)}
-            className="flex items-center gap-[0.5vw] px-[1.6vw] py-[0.5vw] bg-white text-black text-[1.1vw] font-bold rounded-[4px] hover:bg-[rgba(255,255,255,0.75)] transition-colors"
+            className="flex items-center gap-[0.8vw] px-[2.2vw] py-[0.55vw] bg-white text-black text-[1.2vw] font-bold rounded-[4px] hover:bg-[rgba(255,255,255,0.75)] transition-all duration-200"
           >
-            <svg className="w-[1.6vw] h-[1.6vw]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
+            <svg className="w-[2vw] h-[2vw]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 4l15 8-15 8z" />
             </svg>
-            Play
+            <span>Play</span>
           </button>
+          {/* Netflix More Info button - gray semi-transparent bg */}
           <button
             onClick={() => onMoreInfo(currentItem)}
-            className="flex items-center gap-[0.5vw] px-[1.6vw] py-[0.5vw] bg-[rgba(109,109,110,0.7)] text-white text-[1.1vw] font-bold rounded-[4px] hover:bg-[rgba(109,109,110,0.4)] transition-colors"
+            className="flex items-center gap-[0.8vw] px-[2.2vw] py-[0.55vw] bg-[rgba(109,109,110,0.7)] text-white text-[1.2vw] font-bold rounded-[4px] hover:bg-[rgba(109,109,110,0.4)] transition-all duration-200"
           >
-            <svg className="w-[1.6vw] h-[1.6vw]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg className="w-[2vw] h-[2vw]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
             </svg>
-            More Info
+            <span>More Info</span>
           </button>
         </div>
       </div>

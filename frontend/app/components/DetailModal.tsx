@@ -154,15 +154,15 @@ export default function DetailModal({ item, onClose }: DetailModalProps) {
 
           <div className="absolute bottom-0 left-0 right-0 h-[120px] bg-gradient-to-t from-[#181818] to-transparent" />
 
-          <div className="absolute bottom-6 left-6 z-10">
+          <div className="absolute bottom-6 left-6 right-6 z-10">
             <h2 className="text-2xl md:text-4xl font-bold mb-3 drop-shadow-lg">{title}</h2>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
                 onClick={() => {}}
-                className="flex items-center gap-2 px-6 py-2 bg-white text-black font-bold rounded hover:bg-white/80 transition-colors"
+                className="flex items-center gap-2 px-[24px] py-[8px] bg-white text-black text-[16px] font-bold rounded-[4px] hover:bg-[rgba(255,255,255,0.75)] transition-colors"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
+                <svg className="w-[24px] h-[24px]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4l15 8-15 8z" />
                 </svg>
                 Play
               </button>

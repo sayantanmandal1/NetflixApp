@@ -7,15 +7,15 @@
   --color-netflix-dark: #181818;
   --color-netflix-gray: #808080;
   --color-netflix-light-gray: #b3b3b3;
-  --font-netflix: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-netflix: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
 }
 
-/* Netflix Sans Font */
+/* Netflix Sans Font - match Netflix's font stack exactly */
 @font-face {
   font-family: 'Netflix Sans';
   font-weight: 100 900;
   font-display: swap;
-  src: local('Netflix Sans'), local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  src: local('Netflix Sans'), local('Helvetica Neue'), local('Segoe UI'), local('Roboto'), local('Ubuntu'), local('sans-serif');
 }
 
 * {
@@ -24,13 +24,31 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+  -webkit-text-size-adjust: 100%;
+}
+
 html, body {
   background-color: #141414;
   color: #fff;
-  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Segoe UI, Roboto, Ubuntu, sans-serif;
+  --base-line-height: 1.2;
+  line-height: var(--base-line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: var(--base-font-size);
+  --base-font-size: 10px;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
 }
 
 ::-webkit-scrollbar {
@@ -73,6 +91,21 @@ a {
   display: none;
 }
 
+/* Netflix hover card animation - card expands from center */
+@keyframes hoverCardExpand {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-hover-card {
+  animation: hoverCardExpand 0.3s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+}
+
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -95,4 +128,20 @@ a {
 }
 .animate-scale-in {
   animation: scaleIn 0.25s ease-out forwards;
+}
+
+/* Netflix-style row title */
+.row-title {
+  font-size: 1.4vw;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-bottom: 0.8em;
+  display: inline-block;
+  min-width: 6em;
+  line-height: 1.25vw;
+}
+
+/* Netflix hover card shadow */
+.hover-card-shadow {
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
 }
