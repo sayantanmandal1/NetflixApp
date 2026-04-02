@@ -106,6 +106,20 @@ a {
   animation: hoverCardExpand 0.3s cubic-bezier(0.5, 0, 0.1, 1) forwards;
 }
 
+@keyframes hoverCardCollapse {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+.animate-hover-card-out {
+  animation: hoverCardCollapse 0.15s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+}
+
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
